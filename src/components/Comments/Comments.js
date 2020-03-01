@@ -24,7 +24,7 @@ class Comments extends Component {
     return (
         <div>
           <h1>Any comments you would like to share?</h1>
-          <input type="text" onChange={this.handleChange}/>
+          <textarea type="text" onChange={this.handleChange}></textarea>
           <button onClick={this.handleClick}>Next</button>
         </div>
     );
