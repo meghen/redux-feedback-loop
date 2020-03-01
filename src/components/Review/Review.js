@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 class Review extends Component {
-    state = {
-        review: ''
-    }
-    handleClick=()=>{
+    handleClick=()=>{      
         /// - WILL SUBMIT AXIOS POST ON CLICK
+        axios({
+          method: 'POST',
+          url: '/feedback',
+          data: this.props.reduxStore
+        }).then((response)=>{
+          console.log('POST response', response);
+        }).catch((err)=>{
+          console.log('error: ', err); 
+        })
         //routes to next page
         this.props.history.push('/complete')
       }
@@ -17,10 +23,13 @@ class Review extends Component {
     return (
         <div>
           <h1>Review</h1>
-          <button onClick={this.handleClick}>Next</button>
+          {JSON.stringify(this.props.reduxStore)}
+          <button onClick={this.handleClick}>Submit</button>
         </div>
     );
   }
 }
-
-export default connect()(withRouter(Review));
+const mapStateToProps = (reduxStore) => ({
+  reduxStore
+})
+export default connect(mapStateToProps)(withRouter(Review));
