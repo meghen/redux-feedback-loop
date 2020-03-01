@@ -1,22 +1,34 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
 import {withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 class Comments extends Component {
-  handleClick=()=>{
-    //routes to next page
-    /// - NEED TO CHANGE PATH TO REVIEW COMPONENT
-    this.props.history.push('/understanding')
-  }
+    state = {
+        comments: ''
+    }
+    handleClick=()=>{
+        this.props.dispatch({
+            type: 'ADD_COMMENTS',
+            payload: this.state.comments
+        })
+        //routes to next page
+        this.props.history.push('/review')
+      }
+      handleChange=(event)=>{
+          this.setState({
+            comments: event.target.value
+          })
+      }
   render() {
     return (
         <div>
-          <h1>Any comments you want to leave?</h1>
-          <input type="text" />
+          <h1>Any comments you would like to share?</h1>
+          <input type="text" onChange={this.handleChange}/>
           <button onClick={this.handleClick}>Next</button>
         </div>
     );
   }
 }
 
-export default withRouter(Comments);
+export default connect()(withRouter(Comments));
