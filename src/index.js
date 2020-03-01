@@ -10,7 +10,7 @@ const firstReducer=(state={}, action)=>{
     if(action.type === 'ADD_FEELINGS'){
         return {
             ...state,
-            feelings: action.payload
+            feeling: action.payload
         };
     } else if (action.type === 'ADD_UNDERSTAND'){
         return {
