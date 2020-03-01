@@ -27,6 +27,7 @@ class Feeling extends Component {
           <h1>How are you feeling today?</h1>
           <form onSubmit={this.handleClick}>
             <input type="number" required onChange={this.handleChange}/>
+            <br></br>
             <button type="submit">Next</button>
           </form>
         </div>

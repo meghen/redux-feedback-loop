@@ -20,11 +20,16 @@ class Comments extends Component {
             comments: event.target.value
           })
       }
+      backClick=()=>{
+        this.props.history.push('/support')
+      }
   render() {
     return (
         <div>
           <h1>Any comments you would like to share?</h1>
-          <input type="text" onChange={this.handleChange}/>
+          <textarea type="text" onChange={this.handleChange}></textarea>
+          <br></br>
+          <button onClick={this.backClick}>Back</button>
           <button onClick={this.handleClick}>Next</button>
         </div>
     );

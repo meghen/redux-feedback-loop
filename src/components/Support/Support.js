@@ -21,12 +21,17 @@ class Support extends Component {
             support: event.target.value
           })
       }
+      backClick=()=>{
+        this.props.history.push('/understanding')
+      }
   render() {
     return (
         <div>
           <h1>Do you feel supported?</h1>
           <form onSubmit={this.handleClick}>
             <input type="number" required onChange={this.handleChange}/>
+            <br></br>
+            <button onClick={this.backClick}>Back</button>
             <button type="submit">Next</button>
           </form>
         </div>
