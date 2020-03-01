@@ -22,8 +22,11 @@ class Review extends Component {
   render() {
     return (
         <div>
-          <h1>Review</h1>
-          {JSON.stringify(this.props.reduxStore)}
+          <h1>Please Review Your Feedback</h1>
+          <h3>Feeling: {this.props.reduxStore.feeling}</h3>
+          <h3>Understanding: {this.props.reduxStore.understanding}</h3>
+          <h3>Support: {this.props.reduxStore.support}</h3>
+          <h3>Comments: {this.props.reduxStore.comments}</h3>
           <button onClick={this.handleClick}>Submit</button>
         </div>
     );
