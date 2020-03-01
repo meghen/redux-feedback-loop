@@ -7,7 +7,8 @@ class Feeling extends Component {
     state = {
         feelings: ''
     }
-    handleClick=()=>{
+    handleClick=(event)=>{
+        event.preventDefault();
         this.props.dispatch({
             type: 'ADD_FEELINGS',
             payload: this.state.feelings
@@ -24,8 +25,10 @@ class Feeling extends Component {
     return (
         <div>
           <h1>How are you feeling today?</h1>
-          <input type="number" onChange={this.handleChange}/>
-          <button onClick={this.handleClick}>Next</button>
+          <form onSubmit={this.handleClick}>
+            <input type="number" required onChange={this.handleChange}/>
+            <button type="submit">Next</button>
+          </form>
         </div>
     );
   }
